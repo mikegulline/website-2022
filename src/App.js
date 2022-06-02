@@ -25,7 +25,7 @@ function App() {
             element={
               <Hero
                 key='12'
-                head='React Js'
+                head='ModGlo Skincare'
                 sub='Professional front end web developer with a passion for React JS and Tailwindcss'
               />
             }
