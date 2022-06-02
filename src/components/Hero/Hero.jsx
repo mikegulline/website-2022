@@ -1,20 +1,36 @@
+import { useEffect } from 'react';
 import Button from '../Button';
-import Zipper from '../Zipper';
+// import Zipper from '../Zipper';
 import FadeIn from '../../animations/FadeIn';
 
-const HeroBox = ({ i }) => {
+import img1 from '../../images/Green—Storyteller.jpg';
+import img2 from '../../images/Green—Travel-Beauty.jpg';
+import img3 from '../../images/before-and-after.jpg';
+import img4 from '../../images/toccoboutit.jpg';
+
+const images = [img1, img2, img3, img4];
+
+const HeroBox = ({ text, index }) => {
   return (
-    <div className='bg-slate-800 h-64 flex items-center justify-center rounded-xl  relative'>
-      <Zipper />
-      <span className='text-slate-500'>{i}</span>
+    <div className='bg-slate-800 flex items-center justify-center rounded-xl  relative overflow-hidden'>
+      <img
+        src={images[index]}
+        alt={text}
+        className='saturate-0 hover:saturate-100 cursor-pointer'
+      />
+      {/* <Zipper /> */}
+      <span className='text-slate-500 relative'></span>
     </div>
   );
 };
 
 const Hero = ({ head, sub }) => {
-  const boxes = ['Design', 'develop', 'Test', 'Deploy'].map((i) => (
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  const boxes = ['Design', 'develop', 'Test', 'Deploy'].map((text, i) => (
     <FadeIn rootMargin='100px'>
-      <HeroBox i={i} key={i} />
+      <HeroBox text={text} index={i} key={i} />
     </FadeIn>
   ));
   return (
@@ -30,7 +46,7 @@ const Hero = ({ head, sub }) => {
             {sub}
           </h2>
         </FadeIn>
-        <div className='mx-auto grid xl:grid-cols-4 md:grid-cols-2 md:gap-10 gap-5 md:mb-16 mb-8'>
+        <div className='mx-auto grid xl:grid-cols-4 grid-cols-2 md:gap-10 md:mb-16 gap-5 mb-8'>
           {boxes}
         </div>
         <FadeIn>
